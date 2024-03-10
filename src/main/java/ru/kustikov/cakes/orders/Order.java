@@ -14,6 +14,8 @@ public class Order {
 
     private Integer preferPrice;
 
+    private Integer spentPrice;
+
     private Integer resultPrice;
 
     private User customer;

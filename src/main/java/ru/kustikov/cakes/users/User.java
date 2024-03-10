@@ -1,5 +1,6 @@
 package ru.kustikov.cakes.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -23,4 +24,7 @@ public class User {
     private String image;
 
     private Timestamp lastActivity;
+
+    @JsonIgnore
+    private Object socialNetworks;
 }

@@ -1,13 +1,15 @@
 package ru.kustikov.cakes.orders;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -27,6 +29,30 @@ public class OrderService {
             return ResponseEntity.ok("Order saved successfully");
         } else {
             return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+        }
+    }
+
+    public ResponseEntity<List<Order>> getAll(String userId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("userId", userId);
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(URL + "/get-all?userId={userId}", HttpMethod.GET, entity, String.class, userId);
+        if (response.getStatusCode().is2xxSuccessful()) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                List<Order> orderList = objectMapper.readValue(response.getBody(), new TypeReference<>() {
+                });
+                System.out.println(orderList.get(0).getProducts().get(0).getOrderItemId());
+                return ResponseEntity.ok(orderList);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(500).build();
+            }
+        } else {
+            log.error("Запрос завершился неудачно. Код ответа: " + response.getStatusCode().value());
+            return ResponseEntity.status(response.getStatusCode()).build();
         }
     }
 }
