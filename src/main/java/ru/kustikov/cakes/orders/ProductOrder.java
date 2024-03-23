@@ -13,5 +13,5 @@ public class ProductOrder {
 
     private Integer quantity;
 
-    private String reference;
+    private String resultImage;
 }

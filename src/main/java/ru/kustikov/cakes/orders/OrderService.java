@@ -44,7 +44,6 @@ public class OrderService {
             try {
                 List<Order> orderList = objectMapper.readValue(response.getBody(), new TypeReference<>() {
                 });
-                System.out.println(orderList.get(0).getProducts().get(0).getOrderItemId());
                 return ResponseEntity.ok(orderList);
             } catch (IOException e) {
                 e.printStackTrace();
