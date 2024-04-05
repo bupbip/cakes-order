@@ -2,8 +2,11 @@ package ru.kustikov.cakes.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import ru.kustikov.cakes.filling.Filling;
+import ru.kustikov.cakes.producttype.ProductType;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 public class User {
@@ -24,6 +27,12 @@ public class User {
     private String image;
 
     private Timestamp lastActivity;
+
+    private List<ProductType> productTypes;
+
+    private List<Filling> fillings;
+
+    private List<Object> consumables;
 
     @JsonIgnore
     private Object socialNetworks;
