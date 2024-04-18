@@ -19,6 +19,8 @@ public class OrderService {
     private final String URL = "http://localhost:4300/api/v1/order";
 
     public ResponseEntity<?> save(Order order) {
+        order.setStatus("CREATED");
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Order> request = new HttpEntity<>(order, headers);
