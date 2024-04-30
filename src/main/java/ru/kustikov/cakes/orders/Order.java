@@ -4,6 +4,7 @@ import lombok.Data;
 import ru.kustikov.cakes.users.User;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
