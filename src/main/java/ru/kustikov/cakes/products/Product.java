@@ -31,5 +31,5 @@ public class Product {
 
     private String ownerUsername;
 
-    private List<Consumable> consumables;
+    private Object consumableProducts;
 }
