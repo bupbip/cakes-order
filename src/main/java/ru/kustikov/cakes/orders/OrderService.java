@@ -2,6 +2,7 @@ package ru.kustikov.cakes.orders;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.micrometer.common.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -19,11 +20,14 @@ public class OrderService {
     private final String URL = "http://localhost:4300/api/v1/order";
 
     public ResponseEntity<?> save(Order order) {
-        order.setStatus("CREATED");
+        if (StringUtils.isEmpty(order.getStatus())) {
+            order.setStatus("CREATED");
+        }
+        OrderData orderData = new OrderData(order);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<Order> request = new HttpEntity<>(order, headers);
+        HttpEntity<OrderData> request = new HttpEntity<>(orderData, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(URL + "/save", request, String.class);
 
