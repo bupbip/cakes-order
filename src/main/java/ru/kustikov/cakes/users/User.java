@@ -36,4 +36,6 @@ public class User {
 
     @JsonIgnore
     private Object socialNetworks;
+
+    private Object subscriptions;
 }
