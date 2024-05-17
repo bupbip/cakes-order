@@ -19,6 +19,7 @@ public class OrderData {
 
     private Integer resultPrice;
 
+
     private User customer;
 
     private User confectioner;
@@ -30,6 +31,8 @@ public class OrderData {
     private String deliveryType;
 
     private String address;
+
+    private String comment;
 
     private List<ProductOrder> products;
 
@@ -46,5 +49,6 @@ public class OrderData {
         this.deliveryType = order.getDeliveryType();
         this.address = order.getAddress();
         this.products = order.getProducts();
+        this.comment = order.getComment();
     }
 }

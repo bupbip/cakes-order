@@ -1,5 +1,6 @@
 package ru.kustikov.cakes.orders;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import ru.kustikov.cakes.users.User;
 
@@ -19,8 +20,10 @@ public class Order {
 
     private Integer resultPrice;
 
+    @JsonManagedReference
     private User customer;
 
+    @JsonManagedReference
     private User confectioner;
 
     private Timestamp createdDate;
@@ -30,6 +33,8 @@ public class Order {
     private String deliveryType;
 
     private String address;
+
+    private String comment;
 
     private List<ProductOrder> products;
 }
