@@ -1,11 +1,8 @@
 package ru.kustikov.cakes.users;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import ru.kustikov.cakes.filling.Filling;
-import ru.kustikov.cakes.orders.Order;
-import ru.kustikov.cakes.orders.OrderData;
 import ru.kustikov.cakes.producttype.ProductType;
 
 import java.sql.Timestamp;
