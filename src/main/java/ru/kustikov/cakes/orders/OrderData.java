@@ -19,7 +19,6 @@ public class OrderData {
 
     private Integer resultPrice;
 
-
     private User customer;
 
     private User confectioner;

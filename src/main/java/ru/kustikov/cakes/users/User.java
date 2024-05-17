@@ -43,7 +43,4 @@ public class User {
     private Object subscriptions;
 
     private Object feedbacksTo;
-
-    @JsonBackReference
-    private Object orders;
 }

@@ -20,10 +20,8 @@ public class Order {
 
     private Integer resultPrice;
 
-    @JsonManagedReference
     private User customer;
 
-    @JsonManagedReference
     private User confectioner;
 
     private Timestamp createdDate;
