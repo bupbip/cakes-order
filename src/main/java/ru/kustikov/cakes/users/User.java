@@ -38,4 +38,6 @@ public class User {
     private Object socialNetworks;
 
     private Object subscriptions;
+
+    private Object feedbacksTo;
 }

@@ -4,7 +4,6 @@ import lombok.Data;
 import ru.kustikov.cakes.users.User;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -30,6 +29,8 @@ public class Order {
     private String deliveryType;
 
     private String address;
+
+    private String comment;
 
     private List<ProductOrder> products;
 }
